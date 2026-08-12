@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Manazhiyil Family</title>
+
+<!--
+  ============================================
+  HOW TO CUSTOMIZE THIS PAGE (no coding needed!)
+  ============================================
+  1. Search for "EDIT ME" comments — those mark every name/photo you
+     should personalize. Names below are placeholders like "Son 1",
+     "Son 1's Wife" — replace the text between the tags with real names.
+  2. To add a real photo: find the empty <div class="photo"></div> for
+     that person and change it to
+     <img class="photo" src="photos/filename.jpg">
+     (keep a "photos" folder next to this file with your images in it).
+  3. NOTE: I didn't have real names or exact great-grandchildren counts,
+     so each grandchild is set up with 2 kids as a starting point —
+     copy or delete <li> blocks under a grandchild to match your
+     actual family.
+  4. Colors and fonts live in "DESIGN TOKENS" near the top of <style> —
+     change once, updates everywhere.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Caveat:wght@600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FBF3E7;
+    --card: #FFFDF8;
+    --ink: #4A3428;
+    --ink-soft: #7A6656;
+    --rose: #B85C5C;
+    --sage: #8A9B6E;
+    --honey: #D9A441;
+    --line: #D8C6A8;
+
+    --font-display: 'Fraunces', serif;
+    --font-hand: 'Caveat', cursive;
+    --font-body: 'Nunito', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+
+  .texture {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(184,92,92,0.06), transparent 40%),
+      radial-gradient(circle at 85% 10%, rgba(138,155,110,0.08), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(217,164,65,0.07), transparent 50%);
+  }
+
+  .hero {
+    text-align: center;
+    padding: 5rem 1.5rem 3rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero .eyebrow {
+    font-family: var(--font-hand);
+    font-size: 1.5rem;
+    color: var(--sage);
+    display: block;
+    margin-bottom: 0.25rem;
+    transform: rotate(-2deg);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero p {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .story {
+    max-width: 640px;
+    margin: 0 auto 4rem;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .story h2 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: var(--rose);
+    margin-bottom: 1rem;
+  }
+
+  .story p { color: var(--ink-soft); font-size: 1.02rem; }
+
+  .tree-section { padding: 1rem 1.5rem 5rem; }
+
+  .tree-section > h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-align: center;
+    font-size: 2.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .tree-scroll { overflow-x: auto; padding-bottom: 2rem; }
+
+  .tree, .tree ul, .tree li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .tree { display: flex; justify-content: center; padding-top: 1rem; }
+
+  .tree ul { padding-top: 30px; display: flex; justify-content: center; }
+
+  .tree li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 14px 0 14px;
+  }
+
+  .tree li::before,
+  .tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 2px solid var(--line);
+    width: 50%;
+    height: 30px;
+  }
+  .tree li::after { right: auto; left: 50%; border-left: 2px solid var(--line); }
+  .tree li:only-child::before, .tree li:only-child::after { display: none; }
+  .tree li:only-child { padding-top: 0; }
+  .tree li:first-child::before { border: 0 none; }
+  .tree li:last-child::after { border: 0 none; }
+  .tree li:last-child::before { border-right: 2px solid var(--line); border-radius: 0 6px 0 0; }
+  .tree li:first-child::after { border-radius: 6px 0 0 0; }
+  .tree ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 2px solid var(--line);
+    width: 0;
+    height: 30px;
+  }
+
+  .node {
+    background: var(--card);
+    border-radius: 6px;
+    padding: 0.8rem 0.9rem 1rem;
+    box-shadow: 0 8px 18px rgba(74,52,40,0.12);
+    min-width: 128px;
+    text-align: center;
+  }
+
+  .node.couple { min-width: 200px; }
+
+  .photo-row { display: flex; justify-content: center; gap: 6px; margin-bottom: 0.5rem; }
+
+  .photo {
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px dashed var(--line);
+  }
+
+  .node-names {
+    font-family: var(--font-hand);
+    font-size: 1.25rem;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .node-role {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--rose);
+    font-weight: 800;
+    margin-top: 0.15rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem 4rem;
+    border-top: 1px solid var(--line);
+  }
+
+  footer p {
+    font-family: var(--font-hand);
+    font-size: 1.4rem;
+    color: var(--sage);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="texture"></div>
+
+<section class="hero">
+  <span class="eyebrow">welcome to</span>
+  <h1>The Manazhiyil Family</h1>
+  <p>Back to my roots — a little corner of our childhood memories, moments, love, stories and faces.</p>
+</section>
+
+<section class="story">
+  <h2>Our story</h2>
+  <p>This is the Manazhiyil family tree, rooted in Guruvayur, Kerala — the place we all grew up and
+     where so many of our memories began. Guruvayur will always be home — a place that connects our
+     past, present, and future. This is our story, our roots, and the family we are proud to call our own.</p>
+</section>
+
+<section class="tree-section">
+  <h2>Family tree</h2>
+
+  <div class="tree-scroll">
+    <ul class="tree">
+      <li>
+        <div class="node couple">
+          <div class="photo-row"><div class="photo"></div><div class="photo"></div></div>
+          <!-- EDIT ME: grandparents' names -->
+          <div class="node-names">Raman &amp; Pankajam</div>
+          <div class="node-role">Grandparents</div>
+        </div>
+
+        <ul>
+          <!-- ===== SON 1 branch ===== -->
+          <li>
+            <div class="node couple">
+              <div class="photo-row"><img class="photo" src="1son.jpg"><img class="photo" src="son1-wife.jpg"></div>
+              <!-- EDIT ME -->
+              <div class="node-names">Narayanan &amp; Indira</div>
+              <div class="node-role">Son &amp; Daughter-in-law</div>
+            </div>
+            <ul>
+              <li>
+                <div class="node couple">
+                  <div class="photo-row"><img class="photo" src="grandchild1.1.jpg"><img class="photo" src="grandchild1.1-spouse.jpg"></div>
+                  <!-- EDIT ME -->
+                  <div class="node-names">Ram &amp; Asha</div>
+                  <div class="node-role">Grandchild</div>
+                </div>
+                <ul>
+                  <li>
+                    <div class="node">
+                      <div class="photo-row"><img class="photo" src="greatgrandchild1.1.jpg"></div>
+                      <div class="node-names">Great-grandchild Sanvi</div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <div class="node couple">
+                  <div class="photo-row"><img class="photo" src="grandchild1.2.jpg"><img class="photo" src="grandchild1.2-spouse.jpg"></div>
+                  <div class="node-names">Krishna &amp; Reshma</div>
+                  <div class="node-role">Grandchild</div>
+                </div>
+                <ul>
+                  <li>
+                    <div class="node">
+                      <div class="photo-row"><img class="photo" src="greatgrandchild121.jpg"></div>
+                      <div class="node-names">Great-grandchild Hridhaan</div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- ===== SON 2 branch ===== -->
+          <li>
+            <div class="node couple">
+              <div class="photo-row"><img class="photo" src="son2.jpg"><img class="photo" src="son2-spouse.jpg"></div>
+              <div class="node-names">Subramanian &amp; Rajeshwari</div>
+              <div class="node-role">Son &amp; Daughter-in-law</div>
+            </div>
+            <ul>
+              <li>
+                <div class="node couple">
+                  <div class="photo-row"><img class="photo" src="grandson3.1.jpg"><img class="photo" src="grandson2.1-spouse.jpg"></div>
+                  <div class="node-names">Rajesh&amp; Sushmita</div>
+                  <div class="node-role">Grandchild</div>
+                </div>
+                <ul>
+                  <li>
+                    <div class="node">
+                      <div class="photo-row"><div class="photo"></div></div>
+                      <div class="node-names">Great-grandchild 2.1.1</div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <div class="node couple">
+                  <div class="photo-row"><img class="photo" src="granddaughter2.2.jpg"><img class="photo" src="granddaughter2.2-spouse.jpg"></div>
+                  <div class="node-names">Remya &amp; Sidharth</div>
+                  <div class="node-role">Grandchild</div>
+                </div>
+                <ul>
+                  <li>
+                    <div class="node">
+                      <div class="photo-row"><img class="photo" src="greatgrandson3.2.1.jpg"></div>
+                      <div class="node-names">Great-grandchild 2.2.1</div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+
+          <!-- ===== SON 3 branch ===== -->
+          <li>
+            <div class="node couple">
+              <div class="photo-row"><img class="photo" src="son3.jpg"><img class="photo" src="son3-spouse.jpg"></div>
+              <div class="node-names">Raman &amp; Padmaja</div>
+              <div class="node-role">Son &amp; Daughter-in-law</div>
+            </div>
+            <ul>
+              <li>
+                <div class="node couple">
+                  <div class="photo-row"><img class="photo" src="granddaughter3.1.jpg"><img class="photo" src="granddaughter3.1-spouse.jpg"></div>
+                  <div class="node-names">Sindhu &amp; Dinesh</div>
+                  <div class="node-role">Grandchild</div>
+                </div>
+                <ul>
+                  <li>
+                    <div class="node">
+                      <div class="photo-row"><img class="photo" src="greatchild3.1.1-jpg.jpg"></div>
+                      <div class="node-names">Great-grandchild Devu</div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <div class="node couple">
+                  <div class="photo-row"><img class="photo" src="granddaughter3.2.jpg"><img class="photo" src="granddaughter3.2-spouse.jpg"></div>
+                  <div class="node-names">Aswathy &amp; Prasad</div>
+                  <div class="node-role">Grandchild</div>
+                </div>
+                <ul>
+                  <li>
+                    <div class="node">
+                      <div class="photo-row"><img class="photo" src="greatchild3.2.1-jpg.jpg"></div>
+                      <div class="node-names">Great-grandchild Gauri</div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- ===== SON 4 branch (only 1 child) ===== -->
+          <li>
+            <div class="node couple">
+              <div class="photo-row"><img class="photo" src="son4.jpg"><img class="photo" src="son4-spouse.jpg"></div>
+              <div class="node-names">Unnikrishnan &amp; Sreedevi</div>
+              <div class="node-role">Son &amp; Daughter-in-law</div>
+            </div>
+            <ul>
+              <li>
+                <div class="node couple">
+                  <div class="photo-row"><img class="photo" src="Granddaughter4.1.jpg"><img class="photo" src="granddaughter4.1-spouse.jpg"></div>
+                  <div class="node-names">Sreeja &amp; Aneesh</div>
+                  <div class="node-role">Grandchild</div>
+                </div>
+                <ul>
+                  <li>
+                    <div class="node">
+                      <div class="photo-row"><img class="photo" src="greatgranddaughter4.1.1.jpg"></div>
+                      <div class="node-names">Great-grandchild Vani</div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="node">
+                      <div class="photo-row"><img class="photo" src="greatgranddaughter4.1.2.jpg"></div>
+                      <div class="node-names">Great-grandchild Bhagya</div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Made with love, one branch at a time.</p>
+</footer>
+
+</body>
+</html>
